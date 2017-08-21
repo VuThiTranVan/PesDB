@@ -1,6 +1,10 @@
 package framgiavn.project01.web.business.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 import framgiavn.project01.web.business.UserBusiness;
 import framgiavn.project01.web.dao.UserDAO;
@@ -9,8 +13,17 @@ import framgiavn.project01.web.model.User;
 
 public class UserBusinessImpl implements UserBusiness {
 
-	@Autowired
 	public UserDAO userDAO;
+
+	public UserDAO getUserDAO() {
+		return userDAO;
+	}
+
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
+
+
 
 	@Override
 	public UserInfo findByUserId(Integer user_id) {
@@ -45,6 +58,21 @@ public class UserBusinessImpl implements UserBusiness {
 			throw e;
 		}
 		return user;
+	}
+
+	@Override
+	public List<UserInfo> showUsers() {
+		try {
+			List<User> users = userDAO.showUsers();
+			List<UserInfo> userInfos = new ArrayList<UserInfo>();
+			for(User user : users) {
+				userInfos.add(new UserInfo(user));
+			}
+			return userInfos;
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 	}
 
 }

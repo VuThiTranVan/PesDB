@@ -1,5 +1,6 @@
 package framgiavn.project01.web.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -59,6 +60,10 @@ public class UserDAOImpl extends DAOSessionFactory implements UserDAO {
 		} finally {
 //			session.close();
 		}
+	}
+	
+	public List<User> showUsers() {
+		return listUser();
 	}
 	
 	public List<User> listUser(){

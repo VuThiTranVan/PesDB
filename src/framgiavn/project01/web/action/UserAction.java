@@ -1,14 +1,12 @@
 package framgiavn.project01.web.action;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 import framgiavn.project01.web.business.UserBusiness;
 import framgiavn.project01.web.info.UserInfo;
-import framgiavn.project01.web.model.User;
 import framgiavn.project01.web.ulti.Logit2;
 
 public class UserAction extends ActionSupport {
@@ -16,12 +14,33 @@ public class UserAction extends ActionSupport {
 
 	private Logit2 log = Logit2.getInstance(UserAction.class);
 
-	@Autowired
 	private UserBusiness userBusiness;	
-	@Autowired
 	private UserInfo userBean;
+	private List<UserInfo> users;
 	
-	private ArrayList<UserInfo> users;
+	public List<UserInfo> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<UserInfo> users) {
+		this.users = users;
+	}
+
+	public void setUserBusiness(UserBusiness userBusiness) {
+		this.userBusiness = userBusiness;
+	}
+
+	public void setUserBean(UserInfo userBean) {
+		this.userBean = userBean;
+	}
+
+	public UserBusiness getUserBusiness() {
+		return userBusiness;
+	}
+
+	public UserInfo getUserBean() {
+		return userBean;
+	}
 
 	public String findByUserId() {
 		userBean = userBusiness.findByUserId(userBean.getUser_id());
@@ -37,6 +56,11 @@ public class UserAction extends ActionSupport {
 		UserInfo userInfo = userBusiness.addUser(userBean);
 		if(userInfo != null) return SUCCESS;
 		else return ERROR;
+	}
+	
+	public String showUsers() {
+		users = userBusiness.showUsers();
+		return SUCCESS;
 	}
 
 	public String homePage() {

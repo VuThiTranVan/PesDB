@@ -20,8 +20,12 @@
 			<result name="error">User.Info</result>
 		</action>
 		
+		<action name="showUsers" class="springUserAction" method="showUsers">
+			<result name="success">User.Show</result>
+		</action>
+		
 		<action name="addUser" class="springUserAction" method="addUser">
-			<result name="success">User.Add</result>
+			<result name="success">HomePage</result>
 		</action>
 	</package>
 </struts>

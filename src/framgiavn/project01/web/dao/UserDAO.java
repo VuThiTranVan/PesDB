@@ -1,5 +1,7 @@
 package framgiavn.project01.web.dao;
 
+import java.util.List;
+
 import framgiavn.project01.web.model.User;
 
 public interface UserDAO {
@@ -9,4 +11,5 @@ public interface UserDAO {
 	
 	public void addUser(User user);
 	
+	public List<User> showUsers();
 }

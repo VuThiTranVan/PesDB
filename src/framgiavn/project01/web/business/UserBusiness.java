@@ -1,12 +1,15 @@
 package framgiavn.project01.web.business;
 
+import java.util.List;
+
 import framgiavn.project01.web.info.UserInfo;
-import framgiavn.project01.web.model.User;
 
 public interface UserBusiness {
-	UserInfo findByUserId(Integer user_id);
+	public UserInfo findByUserId(Integer user_id);
 
-	UserInfo findByUsername(String username);
+	public UserInfo findByUsername(String username);
 	
-	UserInfo addUser(UserInfo user);
+	public UserInfo addUser(UserInfo user);
+	
+	public List<UserInfo> showUsers();
 }
